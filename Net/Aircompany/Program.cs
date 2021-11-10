@@ -5,9 +5,10 @@ using System.Collections.Generic;
 
 namespace Aircompany
 {
-    public class Runner
+    public class Program
     {
-        public static List<Plane> planes = new List<Plane>() {
+        public static List<Plane> planes = new List<Plane>() 
+        {
             new PassengerPlane("Boeing-737", 900, 12000, 60500, 164),
             new PassengerPlane("Boeing-737-800", 940, 12300, 63870, 192),
             new PassengerPlane("Boeing-747", 980, 16100, 70500, 242),
@@ -22,19 +23,21 @@ namespace Aircompany
             new MilitaryPlane("F-15", 1500, 12000, 10000, MilitaryType.FIGHTER),
             new MilitaryPlane("F-22", 1550, 13000, 11000, MilitaryType.FIGHTER),
             new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryType.TRANSPORT)
-    };
+        };
+
         public static void Main(string[] args)
         {
             Airport airport = new Airport(planes);
             Airport militaryAirport = new Airport(airport.GetMilitaryPlanes());
             Airport passengerAirport = new Airport(airport.GetPassengersPlanes());
+
             Console.WriteLine(militaryAirport
                               .SortByMaxDistance()
                               .ToString());
             Console.WriteLine(passengerAirport
                               .SortByMaxSpeed()
                               .ToString());
-            Console.WriteLine(passengerAirport.GetPassengerPlaneWithMaxPassengersCapacity());           
+            Console.WriteLine(passengerAirport.GetPassengerPlaneWithMaxCapacity());           
         }
     }
 }
