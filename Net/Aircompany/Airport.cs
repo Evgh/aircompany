@@ -28,29 +28,35 @@ namespace Aircompany
         public PassengerPlane GetPassengerPlaneWithMaxCapacity()
         {
             var passengerPlanes = GetPassengersPlanes();
-            return passengerPlanes.Aggregate((w, x) => w.GetPassengersCapacity() > x.GetPassengersCapacity() ? w : x);             
+            return passengerPlanes.Aggregate((w, x) => w.PassengersCapacity > x.PassengersCapacity ? w : x);             
         }
 
         public List<MilitaryPlane> GetTransportMilitaryPlanes()
         {
             List<MilitaryPlane> militaryPlanes = GetMilitaryPlanes();
-            return militaryPlanes.Where((plane) => plane.GetPlaneType() == MilitaryType.TRANSPORT).Cast<MilitaryPlane>().ToList();
+            return militaryPlanes.Where((plane) => plane.Type == MilitaryType.Transport).Cast<MilitaryPlane>().ToList();
         }
 
-        public Airport SortByMaxDistance()
+        public void SortByMaxDistance()
         {
-            return new Airport(Planes.OrderBy(w => w.MaxFlightDistance));
+            Planes.OrderBy(w => w.MaxFlightDistance);
         }
 
-        public Airport SortByMaxSpeed()
+        public void SortByMaxSpeed()
         {
-            return new Airport(Planes.OrderBy(w => w.MaxSpeed));
+            Planes.OrderBy(w => w.MaxSpeed);
         }
 
-        public Airport SortByMaxLoadCapacity()
+        public void SortByMaxLoadCapacity()
         {
-            return new Airport(Planes.OrderBy(w => w.MaxLoadCapacity));
+            Planes.OrderBy(w => w.MaxLoadCapacity);
         }
+
+        public Airport CloneAirport()
+        {
+            return new Airport(Planes);
+        }
+
 
         public override string ToString()
         {
