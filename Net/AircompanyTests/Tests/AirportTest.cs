@@ -29,13 +29,13 @@ namespace AircompanyTests.Tests
 
         private PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
 
+        private List<MilitaryPlane> transportMilitaryPlanes = new List<MilitaryPlane> { new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryType.Transport) };
 
         [Test]
         public void Add_MultiplePlanes_ReturnsTransportMilitaryPlanes()
         {
             var airport = new Airport(_planes);
-            var militaryPlanes = airport.GetTransportMilitaryPlanes();
-            Assert.AreEqual(militaryPlanes[0], new MilitaryPlane("C-130 Hercules", 650, 5000, 110000, MilitaryType.Transport));
+            Assert.AreEqual(airport.GetTransportMilitaryPlanes(), transportMilitaryPlanes);
         }
 
         [Test]
