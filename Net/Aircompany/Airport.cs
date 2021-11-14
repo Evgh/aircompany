@@ -34,7 +34,7 @@ namespace Aircompany
         public List<MilitaryPlane> GetTransportMilitaryPlanes()
         {
             List<MilitaryPlane> militaryPlanes = GetMilitaryPlanes();
-            return militaryPlanes.Where((plane) => plane.Type == MilitaryType.Transport).Cast<MilitaryPlane>().ToList();
+            return militaryPlanes.Where((plane) => plane.Type == MilitaryType.Transport).ToList();
         }
 
         public void SortByMaxDistance()
@@ -49,7 +49,7 @@ namespace Aircompany
 
         public void SortByMaxLoadCapacity()
         {
-            Planes.OrderBy(w => w.MaxLoadCapacity);
+            Planes = Planes.OrderBy(w => w.MaxLoadCapacity).ToList();
         }
 
         public Airport CloneAirport()
