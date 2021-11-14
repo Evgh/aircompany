@@ -11,9 +11,9 @@ namespace AircompanyTests.Tests
     public class AirportTest
     {
         private List<Plane> _planes = new List<Plane>(){
-           new PassengerPlane("P", 0, 0, 2, 999),
+           new PassengerPlane("P", 0, 0, 1, 999),
            new PassengerPlane("P", 0, 0, 0, 0),
-           new PassengerPlane("P", 0, 0, 1, 0),
+           new PassengerPlane("P", 0, 0, 2, 0),
            new MilitaryPlane("Mi", 0, 0, 3, MilitaryType.Bomber),
            new MilitaryPlane("Mi", 0, 0, 4, MilitaryType.Fighter),
            new MilitaryPlane("Tr", 0, 0, 5, MilitaryType.Transport)
@@ -21,7 +21,7 @@ namespace AircompanyTests.Tests
 
         private List<Plane> _planesSortedByMaxLoadCapacity = new List<Plane>(){
            new PassengerPlane("P", 0, 0, 0, 0),
-           new PassengerPlane("P", 0, 0, 1, 100),
+           new PassengerPlane("P", 0, 0, 1, 999),
            new PassengerPlane("P", 0, 0, 2, 0),
            new MilitaryPlane("Mi", 0, 0, 3, MilitaryType.Bomber),
            new MilitaryPlane("Mi", 0, 0, 4, MilitaryType.Fighter),
@@ -30,7 +30,7 @@ namespace AircompanyTests.Tests
 
         private List<MilitaryPlane> _transportMilitaryPlanes = new List<MilitaryPlane> { new MilitaryPlane("Tr", 0, 0, 5, MilitaryType.Transport) };
 
-        private PassengerPlane _passengerPlaneWithMaxPassengerCapacity = new PassengerPlane("P", 0, 0, 2, 999);
+        private PassengerPlane _passengerPlaneWithMaxPassengerCapacity = new PassengerPlane("P", 0, 0, 1, 999);
 
         [Test]
         public void Add_MultiplePlanes_ReturnsTransportMilitaryPlanes()
